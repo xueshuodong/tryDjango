@@ -39,6 +39,7 @@ INSTALLED_APPS = [
 
     #own
     'products', #name of the app created
+    'pages',
 ]
 
 MIDDLEWARE = [
