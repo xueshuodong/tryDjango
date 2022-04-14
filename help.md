@@ -1,3 +1,3 @@
 * product_create.html
-    <form action='/search/' method='POST'>
-    ![alt text](./images/action_search_ex.png)
+    <form action='/search/' method='POST'>&nbsp;
+    <img src="./images/action_search_ex.png">
