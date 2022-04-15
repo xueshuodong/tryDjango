@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'products', #name of the app created
     'pages',
     'blog',
+    'courses',
 ]
 
 MIDDLEWARE = [
