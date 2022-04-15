@@ -4,14 +4,19 @@ from .models import Course
 from .forms import CourseModelForm 
 
 # BASE VIEW Class = VIEW
-class CourseUpdateView(View):
-    template_name = 'courses/course_update.html'
-    def get_object(self): #overwrite your detail view
-        id = self.kwargs.get('id')
+class CourseObjectMixin(object):
+    model = Course
+    lookup = 'id'
+
+    def get_object(self):
+        id = self.kwargs.get(self.lookup)
         obj = None
         if id is not None:
-            obj = get_object_or_404(Course, id=id)
+            obj = get_object_or_404(self.model, id=id)
         return obj
+
+class CourseUpdateView(CourseObjectMixin, View):
+    template_name = 'courses/course_update.html'
 
     def get(self, request, id=None, *arg, **kwargs): #id=None: id is not requiered
         context = {}
@@ -34,14 +39,8 @@ class CourseUpdateView(View):
             context['form'] = form
         return render(request, self.template_name, context)
 
-class CourseDeleteView(View):
+class CourseDeleteView(CourseObjectMixin, View):
     template_name = 'courses/course_delete.html'
-    def get_object(self): #overwrite your detail view
-        id = self.kwargs.get('id')
-        obj = None
-        if id is not None:
-            obj = get_object_or_404(Course, id=id)
-        return obj
 
     def get(self, request, id=None, *arg, **kwargs): #id=None: id is not requiered
         context = {}
@@ -89,14 +88,14 @@ class CourseListView(View):
 # class MyListView(CourseListView):
 #     queryset = Course.objects.filter(id=1)
 
-class CourseView(View):
+class CourseView(CourseObjectMixin, View):
     template_name = 'courses/course_detail.html'
     def get(self, request, id=None, *arg, **kwargs): #id=None: id is not requiered
-        context = {}
-        if id is not None:
-            obj = get_object_or_404(Course, id=id)
-            context['object'] = obj
-        print(context)
+        context = {'object': self.get_object()}
+        # if id is not None:
+        #     #obj = get_object_or_404(Course, id=id)
+        #     context['object'] = obj
+        # print(context)
         return render(request, self.template_name, context)
 
 # class CourseView(View):
