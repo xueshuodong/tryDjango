@@ -18,7 +18,22 @@ https://docs.djangoproject.com/en/4.0/ref/forms/fields/
     widget=forms.Textarea: change text p form to Text box
 &nbsp;&nbsp;
 https://docs.djangoproject.com/en/4.0/ref/forms/widgets/
-&nbsp;&nbsp;    
+&nbsp;&nbsp;   
+
+* 404 example
+from django.shortcuts import render, get_object_or_404
+
+obj = get_object_or_404(Product, id=id)
+context = {
+    "object": obj
+}
+<img src='./images/404_notfound.png'>&nbsp;&nbsp;
+from django.http import Http404
+try:
+    obj = Product.objects.get(id=id)
+except Product.DoesNotExist:
+    raise Http404
+
 
 
     

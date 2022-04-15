@@ -1,0 +1,18 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<form action='' method='POST'>{% csrf_token %}
+    {{ form.as_p }}
+    <input type='submit' value='save' />
+</form>
+{% endblock %}
+
+<!-- {% block contenttt %} 
+<form action='.' method='POST'> {% csrf_token %}
+    <input type='text' name="title" placeholder="your title" />
+    <input type='submit' value='save' />
+</form>
+{% endblock %} -->
+
+# POST need csrf token
+# form without nothing is like a search
