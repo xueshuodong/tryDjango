@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 #backend where to store the product
@@ -10,5 +11,8 @@ class Product(models.Model):
     summary     = models.TextField(blank=True, null=False) #blank=True means, database not required
     featured    = models.BooleanField(default=False) #null=True, default=True
 
+    # def get_absolute_url(self):
+    #     return f"/products/{self.id}/"
+
     def get_absolute_url(self):
-        return f"/products/{self.id}/"
+        return reverse("product-detail", kwargs={"id": self.id})
