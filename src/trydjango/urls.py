@@ -36,7 +36,7 @@ urlpatterns = [
     # path('form/', product_form_view),
     # path('initial/', render_initial_data),
     path('products/', product_list_view, name='product-list'),
-    path('products/<int:id>/', dynamic_lookup_view, name='product'),#<int:id> / <slug:slug>
+    path('products/<int:id>/', dynamic_lookup_view, name='product-detail'),#<int:id> / <slug:slug>
     path('products/<int:id>/delete/', product_delete_view, name='product-delete'),
     path('admin/', admin.site.urls),
 ]
