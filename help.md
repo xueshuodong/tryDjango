@@ -10,9 +10,16 @@
 
     request from url: http://127.0.0.1:8000/create/?title=this%20is%20a%20title
     <img src='./images/backend_title_request_Ex.png'>
-
+&nbsp;&nbsp;
+https://docs.djangoproject.com/en/4.0/ref/forms/fields/
 * product_form.html&nbsp;
     form.as_p -> p means p tag see below
-    <img src='./images/p_tag_form.png'>
+    <img src='./images/p_tag_form.png'>&nbsp;
+    widget=forms.Textarea: change text p form to Text box
+&nbsp;&nbsp;
+https://docs.djangoproject.com/en/4.0/ref/forms/widgets/
+&nbsp;&nbsp;    
+
+
     
     
